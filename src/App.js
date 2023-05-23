@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import Navbar from "./components/Navbar";
+import Contests from "./components/Contests";
+import image from './codechef.jpg';
+import cf from './codeforce.png';
+import hr from './hackerrank.png';
+import he from './hackerearth.png';
+import coder from './coder.jpg';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import LoadingBar from 'react-top-loading-bar'
 
 function App() {
+
+  const [progress,setProgress] = useState(0);
+
+  let set = (progress) => {
+      setProgress(progress);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-[#F8F6F4]">
+      <Router>
+        <Navbar/>
+            <LoadingBar
+              color='#077af5'
+              progress={progress}
+              height={5}
+              loaderSpeed={500}
+            />
+        <Routes>
+          <Route exact path="/" element={<Contests func={set} image={coder}  key = "/" plateform="all"/>}>
+          </Route>
+          <Route exact path="/codechef" element={<Contests func={set} key="/codechef" plateform="code_chef" image={image}/>}>
+          </Route>
+          <Route exact path="/codeforces" element={<Contests func={set} key="/codeforces" image={cf} plateform="codeforces"/>}>
+          </Route>
+          <Route exact path="/hackerearth" element={<Contests func={set} key="/hackerearth" image={he} plateform="hacker_earth"/>}>
+          </Route>
+          <Route exact path="/hackerrank" element={<Contests func={set} key="/hackerrank" image={hr} plateform="hacker_rank"/>}>
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
