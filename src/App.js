@@ -1,11 +1,11 @@
 import React,{useState} from "react";
 import Navbar from "./components/Navbar";
 import Contests from "./components/Contests";
-import image from './codechef.jpg';
-import cf from './codeforce.png';
-import hr from './hackerrank.png';
-import he from './hackerearth.png';
-import coder from './coder.jpg';
+import image from './images/codechef.jpg';
+import cf from './images/codeforce.png';
+import hr from './images/hackerrank.png';
+import he from './images/hackerearth.png';
+import coder from './images/coder.jpg';
 import {
   BrowserRouter as Router,
   Routes,
